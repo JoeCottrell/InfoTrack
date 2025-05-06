@@ -1,0 +1,32 @@
+﻿@page "/"
+@using InfoTrack.Services.Factory
+@using static InfoTrack.Services.Factory.SearchContainer
+@rendermode InteractiveServer
+
+
+<PageTitle>Home</PageTitle>
+
+<h1>Search</h1>
+
+<div>Term to search: <input id="txtSearchTerm" palceholder="Enter your search term" @bind-value="@searchTerm" /></div>
+
+<div>Url to check: <input id="txtUrl" palceholder="Enter your url" @bind-value="@url" /></div>
+<div>
+    Choose search engine: 
+    <InputSelect @bind-Value="@selectedSearchProvider">
+    @foreach (var value in Enum.GetValues<Enums.SearchProvider>())
+    {
+        <option value="@value">@value</option>
+    }
+    </InputSelect>
+</div>
+<button class="btn btn-primary" @onclick="Query">Search</button>
+
+
+<p hidden="@hideResults" role="status">Your url appears in the positions @result</p>
+<p hidden="@hideNoResults" role="status">Your url doesn't appear in these results</p>
+<p hidden="@hideError" role="status">We appear to have encountered an error, please contact sys admin</p>
+
+
+
+
