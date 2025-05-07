@@ -27,7 +27,7 @@ namespace InfoTrack.Services.Parser
                 {
                     if (listResultNodes[i].InnerHtml.Contains(url))
                     {
-                        resultPlace.Add(i);
+                        resultPlace.Add(i + 1);
                     }
                 }
             }
